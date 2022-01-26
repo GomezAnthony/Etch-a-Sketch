@@ -1,22 +1,44 @@
 let container = document.getElementById('container');
 let button = document.querySelector('.change-grid');
 let div;
+let newGrid;
 
-// Create a grid that is 16 x 16
-// Use a foor loop to render the grid
-// Create a div with the name .grid which will be styled and appended to the container.
-function displayGrid(){
-    for(let i = 1; i <= 256; i++){
+    
+
+/**
+ * 
+ * @param {x} x 
+ * This function has a default values of a 16 x 16 grid.
+ * When the user enters the size of the grid, the value will be multiplied and 
+ * call and pass the value to the gridSize funtion
+ * It will create and element div and apend to the container generating the cells
+ */
+function displayGrid(x = 16){
+    for(let i = 0; i < (x*x); i++){
+        gridSize(x)
         div = document.createElement('div');
         div.setAttribute('class', 'grid');
-        div.style.cssText = "border: 1px solid black; height: 25px; width: 25px"; 
-        container.append(div);
+        container.append(div); 
+        
     }
-     
 }
-// This eventListiner draws on the grid using event delegation
-// Use an if statement to check if the event is equal to the class name grid
-// If true than the background color is chnaged to black
+
+/**
+ * 
+ * @param {x} x 
+ * This function allows for the grid size to be adjusted according to the user input
+ */
+function gridSize(x){
+    container.style.setProperty('--grid-cols', x);
+    container.style.setProperty('--grid-rows', x);
+}
+
+
+/**
+ *  This eventListiner draws on the grid using event delegation
+ *  Use an if statement to check if the event is equal to the class name grid
+ * If true than the background color is chnaged to black
+ */
 container.addEventListener('mouseover', function(e){
     if(e.target.className === 'grid'){
         e.target.style.background = 'black';
@@ -25,18 +47,24 @@ container.addEventListener('mouseover', function(e){
     console.log(e.target)
 });
 
-// Clear the grid using inner html
-// Create a new grid 
+/**
+ * This function clears the grid and ask the user to enter a number between 1 and 100
+ * Then it will call the gridSize function and generate the grid
+ */
 function clearGrid(){
-    container.innerHTML = '';
-    for(let i = 1; i <= 256; i++){
+    container.innerHTML = "";
+    let x = window.prompt("Enter a number between 1 and 100:")
+    for(let i = 0; i < (x*x); i++){
+        gridSize(x)
         div = document.createElement('div');
         div.setAttribute('class', 'grid');
-        div.style.cssText = "border: 1px solid black; height: 25px; width: 25px"; 
-        container.append(div);
+        container.append(div);   
     }
 }
-// When the button is pressed the grid will clear
+/**
+ * When the button is pressed the grid will clear by calling the clear grid function
+ */
 button.addEventListener('click', clearGrid);
 
+// Display the grid
 displayGrid()
