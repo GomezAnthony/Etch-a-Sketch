@@ -2,9 +2,6 @@ let container = document.getElementById('container');
 let button = document.querySelector('.change-grid');
 let div;
 let newGrid;
-
-    
-
 /**
  * 
  * @param {x} x 
@@ -32,8 +29,6 @@ function gridSize(x){
     container.style.setProperty('--grid-cols', x);
     container.style.setProperty('--grid-rows', x);
 }
-
-
 /**
  *  This eventListiner draws on the grid using event delegation
  *  Use an if statement to check if the event is equal to the class name grid
@@ -46,7 +41,6 @@ container.addEventListener('mouseover', function(e){
     
     console.log(e.target)
 });
-
 /**
  * This function clears the grid and ask the user to enter a number between 1 and 100
  * Then it will call the gridSize function and generate the grid
