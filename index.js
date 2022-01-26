@@ -5,9 +5,9 @@ let newGrid;
 /**
  * 
  * @param {x} x 
- * This function has a default values of a 16 x 16 grid.
+ * This function has a default value of 16 which will display a 16 X 16 grid..
  * When the user enters the size of the grid, the value will be multiplied and 
- * call and pass the value to the gridSize funtion
+ * call and pass the value to the gridSize function.
  * It will create and element div and apend to the container generating the cells
  */
 function displayGrid(x = 16){
@@ -32,7 +32,7 @@ function gridSize(x){
 /**
  *  This eventListiner draws on the grid using event delegation
  *  Use an if statement to check if the event is equal to the class name grid
- * If true than the background color is chnaged to black
+ * If true than the background color is changed to black
  */
 container.addEventListener('mouseover', function(e){
     if(e.target.className === 'grid'){
